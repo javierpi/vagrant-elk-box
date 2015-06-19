@@ -42,12 +42,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.box = "puppetlabs/ubuntu-14.04-64-puppet"
+  ## config.vm.network :hostonly
+  ## , ip: 192.168.0.42
   config.vm.network :forwarded_port, guest: 5601, host: 5601
   config.vm.network :forwarded_port, guest: 9200, host: 9200
   config.vm.network :forwarded_port, guest: 9300, host: 9300
+  config.vm.host_name =  'logstash.familiapi.cl' 
+
 
   config.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--cpus", "2", "--memory", "2048"]
+
   end
 
   config.vm.provider "vmware_fusion" do |v, override|
