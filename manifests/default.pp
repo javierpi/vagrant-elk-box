@@ -18,7 +18,8 @@ elasticsearch::instance { 'es-01':
   'cluster.name' => 'vagrant_elasticsearch',
   'index.number_of_replicas' => '0',
   'index.number_of_shards'   => '1',
-  'network.host' => '0.0.0.0',
+  'network.host' => 'logstash',
+  'script.disable_dynamic'  => true,
   'marvel.agent.enabled' => false #DISABLE marvel data collection. 
   },        # Configuration hash
   init_defaults => { }, # Init defaults hash
